@@ -1,6 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /account
-Disallow: /api/
-
-Sitemap: https://kerb.com/sitemap.xml
