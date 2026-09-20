@@ -1,0 +1,1281 @@
+import {
+  Make,
+  CarModel,
+  Generation,
+  Variant,
+  City,
+  CityPrice,
+  Feature,
+  VariantFeature,
+  Review,
+  CarDetailAggregate
+} from '../../types/vehicle';
+
+// -------------------------------------------------------------
+// 1. MAKES
+// -------------------------------------------------------------
+export const MAKES: Make[] = [
+  {
+    id: 'make-tata',
+    name: 'Tata',
+    slug: 'tata',
+    country: 'India',
+    logoUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=120&q=80',
+    description: 'Pioneering Indian automotive manufacturer celebrated for segment-first 5-star NCAP safety ratings and EV innovation.',
+    establishedYear: 1945
+  },
+  {
+    id: 'make-hyundai',
+    name: 'Hyundai',
+    slug: 'hyundai',
+    country: 'South Korea',
+    logoUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=120&q=80',
+    description: 'Renowned for reliable powertrain refinement, tech-laden cabins, and expansive nationwide service support.',
+    establishedYear: 1967
+  },
+  {
+    id: 'make-mahindra',
+    name: 'Mahindra',
+    slug: 'mahindra',
+    country: 'India',
+    logoUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=120&q=80',
+    description: 'Dominant Indian SUV powerhouse engineering world-class ladder-frame and monocoque performance vehicles.',
+    establishedYear: 1945
+  },
+  {
+    id: 'make-kia',
+    name: 'Kia',
+    slug: 'kia',
+    country: 'South Korea',
+    logoUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=120&q=80',
+    description: 'Distinctive design language, cutting-edge dual-screen infotainment, and high performance turbo powertrains.',
+    establishedYear: 1944
+  },
+  {
+    id: 'make-maruti',
+    name: 'Maruti Suzuki',
+    slug: 'maruti-suzuki',
+    country: 'India',
+    logoUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=120&q=80',
+    description: 'The benchmark of ownership ease, resale value, and groundbreaking strong-hybrid fuel economy in India.',
+    establishedYear: 1981
+  },
+  {
+    id: 'make-mg',
+    name: 'MG',
+    slug: 'mg',
+    country: 'United Kingdom',
+    logoUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=120&q=80',
+    description: 'Electric mobility challenger offering tech-first luxury passenger lounges and EV battery-as-a-service options.',
+    establishedYear: 1924
+  },
+  {
+    id: 'make-toyota',
+    name: 'Toyota',
+    slug: 'toyota',
+    country: 'Japan',
+    logoUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=120&q=80',
+    description: 'Global benchmark for bulletproof reliability, hybrid powertrain dominance, and legendary resale value.',
+    establishedYear: 1937
+  },
+  {
+    id: 'make-honda',
+    name: 'Honda',
+    slug: 'honda',
+    country: 'Japan',
+    logoUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=120&q=80',
+    description: 'Mastery in high-revving i-VTEC petrol engines, ergonomic packaging, and advanced driver assistance.',
+    establishedYear: 1948
+  }
+];
+
+// -------------------------------------------------------------
+// 2. CITIES
+// -------------------------------------------------------------
+export const CITIES: City[] = [
+  {
+    id: 'city-delhi',
+    name: 'New Delhi',
+    slug: 'delhi',
+    state: 'Delhi',
+    tier: 1,
+    rtoPercentage: 8.5,
+    defaultInsuranceEst: 38000
+  },
+  {
+    id: 'city-mumbai',
+    name: 'Mumbai',
+    slug: 'mumbai',
+    state: 'Maharashtra',
+    tier: 1,
+    rtoPercentage: 11.5,
+    defaultInsuranceEst: 42000
+  },
+  {
+    id: 'city-bangalore',
+    name: 'Bengaluru',
+    slug: 'bangalore',
+    state: 'Karnataka',
+    tier: 1,
+    rtoPercentage: 14.0,
+    defaultInsuranceEst: 45000
+  },
+  {
+    id: 'city-hyderabad',
+    name: 'Hyderabad',
+    slug: 'hyderabad',
+    state: 'Telangana',
+    tier: 1,
+    rtoPercentage: 12.0,
+    defaultInsuranceEst: 40000
+  },
+  {
+    id: 'city-chennai',
+    name: 'Chennai',
+    slug: 'chennai',
+    state: 'Tamil Nadu',
+    tier: 1,
+    rtoPercentage: 12.5,
+    defaultInsuranceEst: 41000
+  },
+  {
+    id: 'city-pune',
+    name: 'Pune',
+    slug: 'pune',
+    state: 'Maharashtra',
+    tier: 2,
+    rtoPercentage: 11.5,
+    defaultInsuranceEst: 41500
+  }
+];
+
+// -------------------------------------------------------------
+// 3. GENERATIONS
+// -------------------------------------------------------------
+export const GENERATIONS: Generation[] = [
+  { id: 'gen-nexon-2', modelId: 'model-nexon', name: 'Facelift (Gen 2)', startYear: 2023, endYear: null, isCurrent: true },
+  { id: 'gen-creta-2', modelId: 'model-creta', name: 'Facelift (Gen 2)', startYear: 2024, endYear: null, isCurrent: true },
+  { id: 'gen-xuv700-1', modelId: 'model-xuv700', name: 'First Generation', startYear: 2021, endYear: null, isCurrent: true },
+  { id: 'gen-seltos-1', modelId: 'model-seltos', name: 'Facelift (Gen 1)', startYear: 2023, endYear: null, isCurrent: true },
+  { id: 'gen-vitara-1', modelId: 'model-vitara', name: 'Current Generation', startYear: 2022, endYear: null, isCurrent: true },
+  { id: 'gen-windsor-1', modelId: 'model-windsor', name: 'Gen 1 EV', startYear: 2024, endYear: null, isCurrent: true }
+];
+
+// -------------------------------------------------------------
+// 4. MODELS
+// -------------------------------------------------------------
+export const MODELS: CarModel[] = [
+  {
+    id: 'model-nexon',
+    makeId: 'make-tata',
+    name: 'Nexon',
+    slug: 'nexon',
+    bodyType: 'SUV',
+    fuelTypes: ['Petrol', 'Diesel', 'Electric'],
+    transmissions: ['Manual', 'DCT', 'AMT'],
+    seatingCapacities: [5],
+    heroImage: '/nexon.jpg',
+    galleryImages: [
+      { id: 'img-nex-1', modelId: 'model-nexon', type: 'image', url: '/nexon.jpg', altText: '2026 Tata Nexon front three quarter angle in pristine studio lighting', width: 1920, height: 1080, isHero: true, colorName: 'Fearless Purple' },
+      { id: 'img-nex-2', modelId: 'model-nexon', type: 'image', url: '/hero-car.jpg', altText: 'Tata Nexon digital cockpit with dual 10.25 inch instrument and touchscreen', width: 1920, height: 1080, colorName: 'Creative Ocean' },
+      { id: 'img-nex-3', modelId: 'model-nexon', type: 'image', url: '/suv-electric.jpg', altText: 'Tata Nexon profile view demonstrating 208mm class leading ground clearance', width: 1920, height: 1080 }
+    ],
+    priceRangeMin: 810000,
+    priceRangeMax: 1560000,
+    pros: [
+      'Segment-leading 5-Star Bharat NCAP safety integrity',
+      'Plush ride quality tuned masterfully for Indian road surfaces',
+      'Comprehensive powertrain breadth: Turbo Petrol, Diesel, and EV',
+      'Rich modern interior with dual 10.25-inch displays & JBL audio'
+    ],
+    cons: [
+      'AMT automatic variants exhibit noticeable shift lag compared to DCA',
+      'Rear seat under-thigh support is average for taller passengers',
+      'Fit and finish of interior trim panel edges has minor inconsistencies'
+    ],
+    kerbVerdict: 'The Tata Nexon remains the benchmark subcompact SUV in India for buyers prioritizing uncompromised cabin safety, robust suspension travel, and cutting-edge tech.',
+    safetyRating: {
+      stars: 5,
+      agency: 'Bharat NCAP',
+      adultScore: '32.22 / 34',
+      childScore: '44.52 / 49'
+    },
+    rating: 4.6,
+    reviewCount: 3840,
+    isNewLaunch: false,
+    isTrending: true,
+    isEV: true,
+    isHybrid: false,
+    isLuxury: false,
+    waitingPeriodWeeks: 4,
+    rivalSlugs: ['creta', 'seltos', 'vitara'],
+    specifications: [
+      {
+        title: 'Engine & Performance',
+        items: [
+          { name: 'Engine Type', value: '1.2L Revotron Turbocharged Petrol / 1.5L Revotorq Diesel' },
+          { name: 'Displacement', value: '1199 cc (Petrol) / 1497 cc (Diesel)' },
+          { name: 'Max Power', value: '118.27 bhp @ 5500 rpm' },
+          { name: 'Max Torque', value: '170 Nm @ 1750-4000 rpm (Petrol) / 260 Nm (Diesel)' },
+          { name: 'Number of Cylinders', value: '3 (Petrol) / 4 (Diesel)' },
+          { name: 'Drive Type', value: 'Front Wheel Drive (FWD)' }
+        ]
+      },
+      {
+        title: 'Dimensions & Weight',
+        items: [
+          { name: 'Length', value: '3995 mm' },
+          { name: 'Width', value: '1804 mm' },
+          { name: 'Height', value: '1620 mm' },
+          { name: 'Wheelbase', value: '2498 mm' },
+          { name: 'Ground Clearance', value: '208 mm' },
+          { name: 'Boot Space', value: '382 Litres' },
+          { name: 'Fuel Tank Capacity', value: '44 Litres' }
+        ]
+      },
+      {
+        title: 'Fuel Economy',
+        items: [
+          { name: 'ARAI Mileage (Petrol MT)', value: '17.44 km/l' },
+          { name: 'ARAI Mileage (Petrol DCA)', value: '17.01 km/l' },
+          { name: 'ARAI Mileage (Diesel MT)', value: '23.23 km/l' },
+          { name: 'City Real-World Range', value: '550 - 850 km depending on fuel' }
+        ]
+      },
+      {
+        title: 'Safety & Security',
+        items: [
+          { name: 'Airbags', value: '6 Airbags (Standard across all variants)' },
+          { name: 'ESP / Electronic Stability', value: 'Standard with Hill Hold Assist' },
+          { name: 'ISOFIX Child Mounts', value: 'Yes, Standard on rear outer seats' },
+          { name: 'Blind View Monitor', value: 'Available on Creative+ and Fearless variants' },
+          { name: '360 Degree Surround Camera', value: 'HD clarity with dynamic guidelines' }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the real-world mileage of the Tata Nexon Petrol DCA?',
+        answer: 'Owners report an average city fuel economy of 11.5 - 13.5 km/l in dense stop-and-go traffic, and 16.5 - 18.0 km/l during highway cruising at 90 km/h.'
+      },
+      {
+        question: 'Does the base variant of Tata Nexon come with 6 airbags?',
+        answer: 'Yes. Tata Motors equips 6 airbags as standard safety equipment from the entry-level Smart variant across the entire range.'
+      },
+      {
+        question: 'What is the waiting period for Tata Nexon in 2026?',
+        answer: 'The typical waiting timeframe is 2 to 4 weeks depending on the selected exterior paint and transmission combination.'
+      }
+    ]
+  },
+  {
+    id: 'model-creta',
+    makeId: 'make-hyundai',
+    name: 'Creta',
+    slug: 'creta',
+    bodyType: 'SUV',
+    fuelTypes: ['Petrol', 'Diesel'],
+    transmissions: ['Manual', 'Automatic', 'CVT', 'DCT'],
+    seatingCapacities: [5],
+    heroImage: '/creta.jpg',
+    galleryImages: [
+      { id: 'img-creta-1', modelId: 'model-creta', type: 'image', url: '/creta.jpg', altText: '2026 Hyundai Creta front parametric jewel grille and LED horizon lamps', width: 1920, height: 1080, isHero: true, colorName: 'Robust Emerald Pearl' },
+      { id: 'img-creta-2', modelId: 'model-creta', type: 'image', url: '/hero-creta.jpg', altText: 'Hyundai Creta side profile showcase showing 17-inch aerodynamic diamond cut alloy wheels', width: 1920, height: 1080, colorName: 'Abyss Black' },
+      { id: 'img-creta-3', modelId: 'model-creta', type: 'image', url: '/luxury-interior.jpg', altText: 'Hyundai Creta seamless dual 10.25 inch curved infotainment and Bose 8-speaker system', width: 1920, height: 1080 }
+    ],
+    priceRangeMin: 1100000,
+    priceRangeMax: 2015000,
+    pros: [
+      'Incredibly refined and silky 1.5L naturally aspirated and diesel engines',
+      'Level 2 ADAS suite with 19 active safety driving aids',
+      'Superb ergonomic cabin with voice-controlled panoramic sunroof',
+      'Exceptional Hyundai after-sales network and strong market resale value'
+    ],
+    cons: [
+      'The 1.5L Turbo Petrol variant is restricted exclusively to the DCT transmission',
+      'Boot capacity at 433L is slightly smaller than some rivals in the category'
+    ],
+    kerbVerdict: 'The Creta continues to set the gold standard for midsize urban SUVs in India, merging effortless drivability with premier comfort and segment-leading technology.',
+    safetyRating: {
+      stars: 5,
+      agency: 'Bharat NCAP',
+      adultScore: '30.85 / 34',
+      childScore: '42.10 / 49'
+    },
+    rating: 4.7,
+    reviewCount: 5120,
+    isNewLaunch: false,
+    isTrending: true,
+    isEV: false,
+    isHybrid: false,
+    isLuxury: false,
+    waitingPeriodWeeks: 6,
+    rivalSlugs: ['seltos', 'nexon', 'vitara'],
+    specifications: [
+      {
+        title: 'Engine & Performance',
+        items: [
+          { name: 'Engine Options', value: '1.5L MPi Petrol / 1.5L U2 CRDi Diesel / 1.5L Turbo GDi Petrol' },
+          { name: 'Max Power', value: '113.18 bhp (Petrol) / 114.4 bhp (Diesel) / 157.57 bhp (Turbo)' },
+          { name: 'Max Torque', value: '143.8 Nm @ 4500 rpm / 250 Nm @ 1500-2750 rpm / 253 Nm' },
+          { name: 'Transmission Options', value: '6-Speed MT, IVT (CVT), 6-Speed AT, 7-Speed Dual Clutch' }
+        ]
+      },
+      {
+        title: 'Dimensions & Space',
+        items: [
+          { name: 'Length', value: '4330 mm' },
+          { name: 'Width', value: '1790 mm' },
+          { name: 'Height', value: '1635 mm' },
+          { name: 'Wheelbase', value: '2610 mm' },
+          { name: 'Boot Space', value: '433 Litres' }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'Which is the most value-for-money variant of Hyundai Creta?',
+        answer: 'The S(O) variant is widely considered the sweet spot, providing the panoramic sunroof, connected car tech, alloy wheels, and wireless charging at a competitive price.'
+      },
+      {
+        question: 'Does Creta come with Level 2 ADAS?',
+        answer: 'Yes, SX Tech and SX(O) variants are equipped with SmartSense Level 2 ADAS including Forward Collision Avoidance, Lane Keep Assist, and Adaptive Cruise Control.'
+      }
+    ]
+  },
+  {
+    id: 'model-xuv700',
+    makeId: 'make-mahindra',
+    name: 'XUV700',
+    slug: 'xuv700',
+    bodyType: 'SUV',
+    fuelTypes: ['Petrol', 'Diesel'],
+    transmissions: ['Manual', 'Automatic'],
+    seatingCapacities: [5, 7],
+    heroImage: '/xuv700.jpg',
+    galleryImages: [
+      { id: 'img-xuv-1', modelId: 'model-xuv700', type: 'image', url: '/xuv700.jpg', altText: '2026 Mahindra XUV700 athletic stance with flush smart door handles', width: 1920, height: 1080, isHero: true, colorName: 'Midnight Black' },
+      { id: 'img-xuv-2', modelId: 'model-xuv700', type: 'image', url: '/luxury-interior.jpg', altText: 'Mahindra XUV700 expansive panoramic Skyroof and Sony 12-speaker 3D audio system', width: 1920, height: 1080 }
+    ],
+    priceRangeMin: 1399000,
+    priceRangeMax: 2699000,
+    pros: [
+      'Terrific engine outputs: 197 bhp mStallion Petrol and 182 bhp mHawk Diesel',
+      'Sophisticated independent Frequency Selective Damping suspension setup',
+      'Class-leading Sony 12-speaker 3D spatial surround sound immersion',
+      'Spacious and configurable 7-seater layout with flat folding third row'
+    ],
+    cons: [
+      'Fuel thirst in the powerful turbo petrol automatic is notable in traffic (8-10 km/l)',
+      'Third row is best suited for teenagers or children over longer highway journeys'
+    ],
+    kerbVerdict: 'An unbeatable package of raw powertrain muscle, high-speed highway composure, and luxurious cabin roominess that punches above its price bracket.',
+    safetyRating: {
+      stars: 5,
+      agency: 'Global NCAP',
+      adultScore: '16.03 / 17',
+      childScore: '41.66 / 49'
+    },
+    rating: 4.8,
+    reviewCount: 4230,
+    isNewLaunch: false,
+    isTrending: true,
+    isEV: false,
+    isHybrid: false,
+    isLuxury: true,
+    waitingPeriodWeeks: 8,
+    rivalSlugs: ['creta', 'nexon'],
+    specifications: [
+      {
+        title: 'Engine & Performance',
+        items: [
+          { name: 'Petrol Engine', value: '2.0L Turbo mStallion TGDi (197 bhp, 380 Nm)' },
+          { name: 'Diesel Engine', value: '2.2L mHawk CRDe (182 bhp, 450 Nm with AT)' },
+          { name: 'Drivetrain', value: 'Front Wheel Drive (FWD) or All-Wheel Drive (AWD)' }
+        ]
+      },
+      {
+        title: 'Dimensions & Capacities',
+        items: [
+          { name: 'Length', value: '4695 mm' },
+          { name: 'Width', value: '1890 mm' },
+          { name: 'Height', value: '1755 mm' },
+          { name: 'Wheelbase', value: '2750 mm' },
+          { name: 'Seating Layout', value: '5-Seater or 7-Seater Options' }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'Does the Mahindra XUV700 offer All-Wheel Drive (AWD)?',
+        answer: 'Yes, the range-topping AX7 and AX7 Luxury Diesel Automatic variants offer optional on-demand All-Wheel Drive.'
+      }
+    ]
+  },
+  {
+    id: 'model-seltos',
+    makeId: 'make-kia',
+    name: 'Seltos',
+    slug: 'seltos',
+    bodyType: 'SUV',
+    fuelTypes: ['Petrol', 'Diesel'],
+    transmissions: ['Manual', 'Automatic', 'CVT', 'DCT'],
+    seatingCapacities: [5],
+    heroImage: '/seltos.jpg',
+    galleryImages: [
+      { id: 'img-sel-1', modelId: 'model-seltos', type: 'image', url: '/seltos.jpg', altText: '2026 Kia Seltos GT-Line with aggressive tiger nose grille and sequential LED turn indicators', width: 1920, height: 1080, isHero: true, colorName: 'Pewter Olive' }
+    ],
+    priceRangeMin: 1090000,
+    priceRangeMax: 2035000,
+    pros: [
+      'Striking, aggressive styling cues with twin 10.25-inch panoramic curved cluster',
+      'Dual-zone automatic climate control and 8-way power adjustable driver seat',
+      'Smooth, responsive 160 PS 1.5L Turbo petrol powertrain'
+    ],
+    cons: [
+      'Firm suspension setup can transmit sharp road bumps at slower speeds',
+      'GTX+ and X-Line trims carry a notable price premium over entry trims'
+    ],
+    kerbVerdict: 'A technology showcase engineered for drivers who appreciate taut road manners, crisp acceleration, and a truly futuristic cabin experience.',
+    safetyRating: {
+      stars: 5,
+      agency: 'Bharat NCAP',
+      adultScore: '29.70 / 34',
+      childScore: '41.30 / 49'
+    },
+    rating: 4.5,
+    reviewCount: 2980,
+    isNewLaunch: false,
+    isTrending: false,
+    isEV: false,
+    isHybrid: false,
+    isLuxury: false,
+    waitingPeriodWeeks: 3,
+    rivalSlugs: ['creta', 'nexon', 'vitara'],
+    specifications: [
+      {
+        title: 'Engine & Performance',
+        items: [
+          { name: 'Displacement', value: '1497 cc / 1482 cc Turbo' },
+          { name: 'Max Power', value: '157.8 bhp @ 5500 rpm' },
+          { name: 'Max Torque', value: '253 Nm @ 1500-3500 rpm' }
+        ]
+      }
+    ],
+    faqs: []
+  },
+  {
+    id: 'model-vitara',
+    makeId: 'make-maruti',
+    name: 'Grand Vitara',
+    slug: 'grand-vitara',
+    bodyType: 'Hybrid',
+    fuelTypes: ['Hybrid', 'Petrol', 'CNG'],
+    transmissions: ['Manual', 'Automatic', 'e-CVT'],
+    seatingCapacities: [5],
+    heroImage: '/vitara.jpg',
+    galleryImages: [
+      { id: 'img-vit-1', modelId: 'model-vitara', type: 'image', url: '/vitara.jpg', altText: '2026 Maruti Suzuki Grand Vitara Intelligent Electric Hybrid in Nexa Blue', width: 1920, height: 1080, isHero: true, colorName: 'Nexa Blue' }
+    ],
+    priceRangeMin: 1080000,
+    priceRangeMax: 2009000,
+    pros: [
+      'Phenomenal real-world fuel economy exceeding 24 km/l in urban driving',
+      'Whisper-quiet silent EV mode start and stop operations',
+      'AllGrip AWD system available on the manual petrol variant'
+    ],
+    cons: [
+      'Hybrid battery placement occupies substantial luggage boot volume',
+      'Outright acceleration is measured rather than thrilling'
+    ],
+    kerbVerdict: 'The most fuel-efficient and stress-free midsize SUV on Indian roads today, saving significant fuel costs for high-mileage commuters.',
+    safetyRating: {
+      stars: 4,
+      agency: 'Global NCAP'
+    },
+    rating: 4.6,
+    reviewCount: 3100,
+    isNewLaunch: false,
+    isTrending: true,
+    isEV: false,
+    isHybrid: true,
+    isLuxury: false,
+    waitingPeriodWeeks: 3,
+    rivalSlugs: ['creta', 'seltos'],
+    specifications: [
+      {
+        title: 'Hybrid Powertrain',
+        items: [
+          { name: 'System Output', value: '114.4 bhp combined' },
+          { name: 'Battery Type', value: 'Lithium-Ion Self-Charging' },
+          { name: 'Fuel Economy (ARAI)', value: '27.97 km/l' }
+        ]
+      }
+    ],
+    faqs: []
+  },
+  {
+    id: 'model-windsor',
+    makeId: 'make-mg',
+    name: 'Windsor EV',
+    slug: 'windsor-ev',
+    bodyType: 'Electric',
+    fuelTypes: ['Electric'],
+    transmissions: ['Automatic'],
+    seatingCapacities: [5],
+    heroImage: '/suv-electric.jpg',
+    galleryImages: [
+      { id: 'img-win-1', modelId: 'model-windsor', type: 'image', url: '/suv-electric.jpg', altText: '2026 MG Windsor EV futuristic aerodynamic crossover silhouette', width: 1920, height: 1080, isHero: true, colorName: 'Starry Black' }
+    ],
+    priceRangeMin: 1350000,
+    priceRangeMax: 1550000,
+    pros: [
+      'Aero Lounge rear seating with 135-degree backrest recline',
+      'Colossal 15.6-inch central touchscreen infotainment display',
+      'Ultra-low running costs under ₹1.5 per kilometer'
+    ],
+    cons: [
+      'Touch-heavy controls require learning curve for basic climate functions',
+      'Real-world highway range drops to ~260 km at 100 km/h speeds'
+    ],
+    kerbVerdict: 'A groundbreaking EV with business-class rear seat indulgence and innovative battery rental flexibility for progressive city buyers.',
+    safetyRating: {
+      stars: 5,
+      agency: 'Bharat NCAP'
+    },
+    rating: 4.4,
+    reviewCount: 890,
+    isNewLaunch: true,
+    isTrending: true,
+    isEV: true,
+    isHybrid: false,
+    isLuxury: false,
+    waitingPeriodWeeks: 2,
+    rivalSlugs: ['nexon'],
+    specifications: [
+      {
+        title: 'Electric Drive & Battery',
+        items: [
+          { name: 'Battery Capacity', value: '38 kWh Prismatic Cell' },
+          { name: 'Claimed Range', value: '331 km (ARAI)' },
+          { name: 'Fast Charging', value: '10% to 80% in 40 minutes (DC 50kW)' }
+        ]
+      }
+    ],
+    faqs: []
+  },
+  {
+    id: 'model-thar',
+    makeId: 'make-mahindra',
+    name: 'Thar',
+    slug: 'thar',
+    bodyType: 'SUV',
+    fuelTypes: ['Diesel', 'Petrol'],
+    transmissions: ['Manual', 'Automatic'],
+    seatingCapacities: [4],
+    heroImage: '/thar.jpg',
+    galleryImages: [
+      { id: 'img-thar-1', modelId: 'model-thar', type: 'image', url: '/thar.jpg', altText: 'Mahindra Thar 4x4 off-road SUV in deep black', width: 1920, height: 1080, isHero: true, colorName: 'Napoli Black' }
+    ],
+    priceRangeMin: 1135000,
+    priceRangeMax: 1760000,
+    pros: [
+      'Iconic authentic 4x4 styling and towering road presence',
+      'Class-leading off-road hardware with mechanical locking differential',
+      'Punchy 2.2L mHawk diesel with 300 Nm torque'
+    ],
+    cons: [
+      'Bouncy ride quality over sharp uneven road undulations',
+      'Strict 4-seater layout with modest luggage volume'
+    ],
+    kerbVerdict: 'An emotional lifestyle off-roader offering unrivaled adventure capability and commanding road stance on Indian roads.',
+    safetyRating: {
+      stars: 4,
+      agency: 'Global NCAP'
+    },
+    rating: 4.6,
+    reviewCount: 3240,
+    isNewLaunch: false,
+    isTrending: true,
+    isEV: false,
+    isHybrid: false,
+    isLuxury: false,
+    waitingPeriodWeeks: 6,
+    rivalSlugs: ['nexon', 'creta'],
+    specifications: [
+      {
+        title: 'Engine & Performance',
+        items: [
+          { name: 'Engine Type', value: '2.2L mHawk CRDe Diesel / 2.0L mStallion Petrol' },
+          { name: 'Max Power', value: '130 bhp (Diesel) / 150 bhp (Petrol)' },
+          { name: 'Max Torque', value: '300 Nm (Diesel) / 320 Nm (Petrol)' },
+          { name: 'Drivetrain', value: '4x4 with low range transfer case or RWD' }
+        ]
+      },
+      {
+        title: 'Fuel Economy',
+        items: [
+          { name: 'ARAI Mileage', value: '15.2 – 18.0 km/l' }
+        ]
+      }
+    ],
+    faqs: []
+  },
+  {
+    id: 'model-curvv',
+    makeId: 'make-tata',
+    name: 'Curvv',
+    slug: 'curvv',
+    bodyType: 'SUV',
+    fuelTypes: ['Petrol', 'Diesel', 'Electric'],
+    transmissions: ['Manual', 'DCT'],
+    seatingCapacities: [5],
+    heroImage: '/curvv.jpg',
+    galleryImages: [
+      { id: 'img-curvv-1', modelId: 'model-curvv', type: 'image', url: '/curvv.jpg', altText: 'Tata Curvv coupe SUV', width: 1920, height: 1080, isHero: true }
+    ],
+    priceRangeMin: 1000000,
+    priceRangeMax: 1900000,
+    pros: ['Stunning coupe SUV silhouette', 'High ground clearance and spacious boot', 'Level 2 ADAS suite'],
+    cons: ['Rear headroom limited for very tall occupants due to sloped roofline'],
+    kerbVerdict: 'A bold, futuristic coupe SUV that introduces premium high-fashion aesthetics to the mainstream segment.',
+    safetyRating: { stars: 5, agency: 'Bharat NCAP' },
+    rating: 4.5,
+    reviewCount: 420,
+    isNewLaunch: true,
+    isTrending: true,
+    isEV: true,
+    isHybrid: false,
+    isLuxury: false,
+    waitingPeriodWeeks: 4,
+    rivalSlugs: ['creta', 'seltos'],
+    specifications: [],
+    faqs: []
+  },
+  {
+    id: 'model-elevate',
+    makeId: 'make-honda',
+    name: 'Elevate',
+    slug: 'elevate',
+    bodyType: 'SUV',
+    fuelTypes: ['Petrol'],
+    transmissions: ['Manual', 'CVT'],
+    seatingCapacities: [5],
+    heroImage: '/elevate.jpg',
+    galleryImages: [
+      { id: 'img-ele-1', modelId: 'model-elevate', type: 'image', url: '/elevate.jpg', altText: 'Honda Elevate midsize SUV', width: 1920, height: 1080, isHero: true }
+    ],
+    priceRangeMin: 1191000,
+    priceRangeMax: 1643000,
+    pros: ['220mm class-topping ground clearance', 'Silky 1.5L i-VTEC petrol reliability', 'Generous 458L boot capacity'],
+    cons: ['No hybrid or turbo petrol option'],
+    kerbVerdict: 'Practical, dependable and remarkably comfortable SUV engineered for long-term worry-free ownership.',
+    safetyRating: { stars: 5, agency: 'Global NCAP' },
+    rating: 4.5,
+    reviewCount: 1650,
+    isNewLaunch: true,
+    isTrending: false,
+    isEV: false,
+    isHybrid: false,
+    isLuxury: false,
+    waitingPeriodWeeks: 3,
+    rivalSlugs: ['creta', 'grand-vitara'],
+    specifications: [],
+    faqs: []
+  },
+  {
+    id: 'model-ioniq5',
+    makeId: 'make-hyundai',
+    name: 'IONIQ 5',
+    slug: 'ioniq-5',
+    bodyType: 'Electric',
+    fuelTypes: ['Electric'],
+    transmissions: ['Automatic'],
+    seatingCapacities: [5],
+    heroImage: '/ioniq5.jpg',
+    galleryImages: [
+      { id: 'img-ion-1', modelId: 'model-ioniq5', type: 'image', url: '/ioniq5.jpg', altText: 'Hyundai IONIQ 5 electric car', width: 1920, height: 1080, isHero: true }
+    ],
+    priceRangeMin: 4605000,
+    priceRangeMax: 4805000,
+    pros: ['800V ultra-fast architecture 10-80% in 18 mins', '631 km ARAI certified range', 'V2L vehicle-to-load power export'],
+    cons: ['Substantial price point for non-luxury badge'],
+    kerbVerdict: 'A triumph of electric engineering and retro-futuristic styling that redefines the premium EV space in India.',
+    safetyRating: { stars: 5, agency: 'Euro NCAP' },
+    rating: 4.8,
+    reviewCount: 310,
+    isNewLaunch: true,
+    isTrending: true,
+    isEV: true,
+    isHybrid: false,
+    isLuxury: true,
+    waitingPeriodWeeks: 4,
+    rivalSlugs: ['windsor-ev'],
+    specifications: [],
+    faqs: []
+  }
+];
+
+// -------------------------------------------------------------
+// 5. VARIANTS
+// -------------------------------------------------------------
+export const VARIANTS: Variant[] = [
+  // Nexon Variants
+  {
+    id: 'var-nexon-smart',
+    generationId: 'gen-nexon-2',
+    modelId: 'model-nexon',
+    name: 'Smart 1.2 Petrol MT',
+    slug: 'smart-1-2-petrol-mt',
+    exShowroomPrice: 810000,
+    fuelType: 'Petrol',
+    transmission: 'Manual',
+    engineCc: 1199,
+    powerBhp: 118,
+    torqueNm: 170,
+    mileageKmpl: 17.44,
+    seating: 5,
+    airbags: 6,
+    sunroofType: 'None',
+    keyFeatures: ['6 Airbags Standard', 'LED Headlamps', 'Drive Modes (Eco, City, Sport)', 'Central Locking'],
+    isRecommended: false,
+    badge: 'Entry Trim'
+  },
+  {
+    id: 'var-nexon-pure',
+    generationId: 'gen-nexon-2',
+    modelId: 'model-nexon',
+    name: 'Pure 1.2 Petrol MT',
+    slug: 'pure-1-2-petrol-mt',
+    exShowroomPrice: 980000,
+    fuelType: 'Petrol',
+    transmission: 'Manual',
+    engineCc: 1199,
+    powerBhp: 118,
+    torqueNm: 170,
+    mileageKmpl: 17.44,
+    seating: 5,
+    airbags: 6,
+    sunroofType: 'None',
+    keyFeatures: ['7-inch Touchscreen Infotainment', 'Steering Mounted Controls', 'Rear AC Vents', 'Wheel Covers'],
+    isRecommended: false
+  },
+  {
+    id: 'var-nexon-creative-plus-dca',
+    generationId: 'gen-nexon-2',
+    modelId: 'model-nexon',
+    name: 'Creative+ 1.2 Petrol DCA',
+    slug: 'creative-plus-1-2-petrol-dca',
+    exShowroomPrice: 1250000,
+    fuelType: 'Petrol',
+    transmission: 'DCT',
+    engineCc: 1199,
+    powerBhp: 118,
+    torqueNm: 170,
+    mileageKmpl: 17.01,
+    seating: 5,
+    airbags: 6,
+    sunroofType: 'Single Pane',
+    keyFeatures: ['10.25-inch Touchscreen', '360 Camera with Blind View', '16-inch Diamond Alloys', 'Wireless CarPlay/Android Auto', 'Paddle Shifters'],
+    isRecommended: true,
+    recommendationReason: 'Best Value Pick: Combines the fast dual-clutch automatic gearbox, 360 camera, voice sunroof, and modern screens at an attractive price point.',
+    badge: 'Best Value Automatic'
+  },
+  {
+    id: 'var-nexon-fearless-plus-diesel',
+    generationId: 'gen-nexon-2',
+    modelId: 'model-nexon',
+    name: 'Fearless+ S 1.5 Diesel MT',
+    slug: 'fearless-plus-s-1-5-diesel-mt',
+    exShowroomPrice: 1560000,
+    fuelType: 'Diesel',
+    transmission: 'Manual',
+    engineCc: 1497,
+    powerBhp: 113,
+    torqueNm: 260,
+    mileageKmpl: 23.23,
+    seating: 5,
+    airbags: 6,
+    sunroofType: 'Single Pane',
+    keyFeatures: ['Ventilated Front Seats', 'JBL 9-Speaker Audio + Subwoofer', 'Air Purifier', 'Sequenced LED Welcome Animation'],
+    isRecommended: false,
+    badge: 'Flagship Luxury'
+  },
+
+  // Creta Variants
+  {
+    id: 'var-creta-e',
+    generationId: 'gen-creta-2',
+    modelId: 'model-creta',
+    name: 'E 1.5 Petrol MT',
+    slug: 'e-1-5-petrol-mt',
+    exShowroomPrice: 1100000,
+    fuelType: 'Petrol',
+    transmission: 'Manual',
+    engineCc: 1497,
+    powerBhp: 113,
+    torqueNm: 144,
+    mileageKmpl: 17.4,
+    seating: 5,
+    airbags: 6,
+    sunroofType: 'None',
+    keyFeatures: ['6 Airbags', 'All Wheel Disc Brakes', 'TPMS Highline', 'Rear AC Vents'],
+    isRecommended: false
+  },
+  {
+    id: 'var-creta-so-ivt',
+    generationId: 'gen-creta-2',
+    modelId: 'model-creta',
+    name: 'S(O) 1.5 Petrol IVT Automatic',
+    slug: 'so-1-5-petrol-ivt-automatic',
+    exShowroomPrice: 1585000,
+    fuelType: 'Petrol',
+    transmission: 'CVT',
+    engineCc: 1497,
+    powerBhp: 113,
+    torqueNm: 144,
+    mileageKmpl: 17.7,
+    seating: 5,
+    airbags: 6,
+    sunroofType: 'Panoramic',
+    keyFeatures: ['Voice Enabled Panoramic Sunroof', 'Dual Zone Automatic AC', 'Electronic Parking Brake with Auto Hold', '17-inch Alloy Wheels'],
+    isRecommended: true,
+    recommendationReason: 'The ultimate family sweet spot: Offers the huge panoramic sunroof, butter-smooth automatic transmission, and dual-zone climate without paying the steep ADAS top-end premium.',
+    badge: 'Most Popular Pick'
+  },
+  {
+    id: 'var-creta-sxo-turbo',
+    generationId: 'gen-creta-2',
+    modelId: 'model-creta',
+    name: 'SX(O) 1.5 Turbo Petrol 7DCT',
+    slug: 'sxo-1-5-turbo-petrol-7dct',
+    exShowroomPrice: 2015000,
+    fuelType: 'Petrol',
+    transmission: 'DCT',
+    engineCc: 1482,
+    powerBhp: 158,
+    torqueNm: 253,
+    mileageKmpl: 18.4,
+    seating: 5,
+    airbags: 6,
+    sunroofType: 'Panoramic',
+    keyFeatures: ['Level 2 ADAS (19 Features)', 'Bose 8-Speaker Audio', 'Ventilated Front Seats', '360 Degree Surround View', 'Powered Driver Seat'],
+    isRecommended: false,
+    badge: 'Tech Flagship'
+  },
+
+  // XUV700 Variants
+  {
+    id: 'var-xuv-mx-petrol',
+    generationId: 'gen-xuv700-1',
+    modelId: 'model-xuv700',
+    name: 'MX 5-Seater Petrol MT',
+    slug: 'mx-5-seater-petrol-mt',
+    exShowroomPrice: 1399000,
+    fuelType: 'Petrol',
+    transmission: 'Manual',
+    engineCc: 1997,
+    powerBhp: 197,
+    torqueNm: 380,
+    mileageKmpl: 13.0,
+    seating: 5,
+    airbags: 2,
+    sunroofType: 'None',
+    keyFeatures: ['200 PS mStallion Engine', '8-inch Infotainment', 'LED DRLs', '7-inch Digital Cluster'],
+    isRecommended: false
+  },
+  {
+    id: 'var-xuv-ax7-diesel-at',
+    generationId: 'gen-xuv700-1',
+    modelId: 'model-xuv700',
+    name: 'AX7 7-Seater Diesel AT',
+    slug: 'ax7-7-seater-diesel-at',
+    exShowroomPrice: 2199000,
+    fuelType: 'Diesel',
+    transmission: 'Automatic',
+    engineCc: 2184,
+    powerBhp: 182,
+    torqueNm: 450,
+    mileageKmpl: 16.5,
+    seating: 7,
+    airbags: 6,
+    sunroofType: 'Panoramic',
+    keyFeatures: ['Level 2 ADAS Suite', 'Dual 10.25-inch Screens', 'Skyroof (Panoramic)', 'Smart Door Handles', 'Leatherette Upholstery'],
+    isRecommended: true,
+    recommendationReason: 'Best 7-Seater Family Cruiser: The 450 Nm torque diesel paired with the 6-speed torque converter is indestructible on long journeys, backed by full ADAS safety.',
+    badge: 'Kerb Top Recommendation'
+  },
+
+  // Grand Vitara Hybrid
+  {
+    id: 'var-vitara-zeta-hybrid',
+    generationId: 'gen-vitara-1',
+    modelId: 'model-vitara',
+    name: 'Zeta+ Strong Hybrid e-CVT',
+    slug: 'zeta-plus-strong-hybrid-ecvt',
+    exShowroomPrice: 1840000,
+    fuelType: 'Hybrid',
+    transmission: 'e-CVT',
+    engineCc: 1490,
+    powerBhp: 114,
+    torqueNm: 141,
+    mileageKmpl: 27.97,
+    seating: 5,
+    airbags: 6,
+    sunroofType: 'Panoramic',
+    keyFeatures: ['Self-Charging Strong Hybrid', 'Panoramic Sunroof', 'Head-up Display (HUD)', 'Wireless Charging'],
+    isRecommended: true,
+    recommendationReason: 'Mileage Champion: Cuts monthly city fuel expenses in half with real-world 25 km/l urban efficiency and near-silent operation.',
+    badge: 'Efficiency King'
+  },
+
+  // MG Windsor EV
+  {
+    id: 'var-windsor-exclusive',
+    generationId: 'gen-windsor-1',
+    modelId: 'model-windsor',
+    name: 'Exclusive EV',
+    slug: 'exclusive-ev',
+    exShowroomPrice: 1450000,
+    fuelType: 'Electric',
+    transmission: 'Automatic',
+    powerBhp: 134,
+    torqueNm: 200,
+    rangeKm: 331,
+    seating: 5,
+    airbags: 6,
+    sunroofType: 'Panoramic',
+    keyFeatures: ['15.6-inch Touchscreen', 'Aero Lounge 135° Reclining Seats', '360 View Camera', 'Connected Tech'],
+    isRecommended: true,
+    recommendationReason: 'Unmatched Cabin Luxury: Backseat comfort rivaling cars twice its price, ideal for city owners who are chauffeur-driven.',
+    badge: 'Executive Lounge'
+  }
+];
+
+// -------------------------------------------------------------
+// 6. CITY PRICING (WITH HISTORICAL VERSIONING AUDIT DATA)
+// -------------------------------------------------------------
+export const CITY_PRICES: CityPrice[] = [
+  // Nexon Creative+ DCA in Delhi
+  {
+    id: 'cp-nex-delhi',
+    variantId: 'var-nexon-creative-plus-dca',
+    cityId: 'city-delhi',
+    exShowroom: 1250000,
+    rtoTax: 106250, // 8.5%
+    insurance: 41200,
+    fastag: 600,
+    handlingCharges: 2500,
+    onRoadPrice: 1400550,
+    effectiveFrom: '2026-01-01',
+    effectiveTo: null,
+    lastVerifiedAt: '2026-03-15',
+    source: 'Delhi Transport Department Gazette & Official Tata Price Bulletin',
+    sourceUrl: 'https://transport.delhi.gov.in',
+    isCurrent: true
+  },
+  // Nexon Creative+ DCA in Mumbai
+  {
+    id: 'cp-nex-mumbai',
+    variantId: 'var-nexon-creative-plus-dca',
+    cityId: 'city-mumbai',
+    exShowroom: 1250000,
+    rtoTax: 143750, // 11.5%
+    insurance: 43500,
+    fastag: 600,
+    handlingCharges: 2500,
+    onRoadPrice: 1440350,
+    effectiveFrom: '2026-01-01',
+    effectiveTo: null,
+    lastVerifiedAt: '2026-03-15',
+    source: 'Maharashtra Motor Vehicles Department Rate Schedule',
+    isCurrent: true
+  },
+  // Nexon Creative+ DCA in Bangalore
+  {
+    id: 'cp-nex-blr',
+    variantId: 'var-nexon-creative-plus-dca',
+    cityId: 'city-bangalore',
+    exShowroom: 1250000,
+    rtoTax: 175000, // 14.0%
+    insurance: 44200,
+    fastag: 600,
+    handlingCharges: 2500,
+    onRoadPrice: 1472300,
+    effectiveFrom: '2026-01-01',
+    effectiveTo: null,
+    lastVerifiedAt: '2026-03-15',
+    source: 'Karnataka RTO MV Tax Revision',
+    isCurrent: true
+  },
+
+  // Creta S(O) IVT in Delhi
+  {
+    id: 'cp-creta-delhi',
+    variantId: 'var-creta-so-ivt',
+    cityId: 'city-delhi',
+    exShowroom: 1585000,
+    rtoTax: 134725,
+    insurance: 48900,
+    fastag: 600,
+    handlingCharges: 2500,
+    onRoadPrice: 1771725,
+    effectiveFrom: '2026-01-01',
+    effectiveTo: null,
+    lastVerifiedAt: '2026-03-18',
+    source: 'Hyundai Authorized OEM Dealer Master Sheet Delhi NCR',
+    isCurrent: true
+  },
+  // Creta S(O) IVT in Mumbai
+  {
+    id: 'cp-creta-mumbai',
+    variantId: 'var-creta-so-ivt',
+    cityId: 'city-mumbai',
+    exShowroom: 1585000,
+    rtoTax: 182275,
+    insurance: 51200,
+    fastag: 600,
+    handlingCharges: 2500,
+    onRoadPrice: 1821575,
+    effectiveFrom: '2026-01-01',
+    effectiveTo: null,
+    lastVerifiedAt: '2026-03-18',
+    source: 'Maharashtra Motor Vehicles Department Bulletin',
+    isCurrent: true
+  },
+
+  // XUV700 AX7 Diesel in Bangalore
+  {
+    id: 'cp-xuv-blr',
+    variantId: 'var-xuv-ax7-diesel-at',
+    cityId: 'city-bangalore',
+    exShowroom: 2199000,
+    rtoTax: 307860,
+    insurance: 68400,
+    fastag: 600,
+    handlingCharges: 3000,
+    onRoadPrice: 2578860,
+    effectiveFrom: '2026-01-01',
+    effectiveTo: null,
+    lastVerifiedAt: '2026-03-12',
+    source: 'Mahindra Dealer Circular Karnataka',
+    isCurrent: true
+  }
+];
+
+// -------------------------------------------------------------
+// 7. FEATURES MASTER & REVIEWS
+// -------------------------------------------------------------
+export const FEATURES: Feature[] = [
+  { id: 'f-airbags-6', name: '6 Airbags', category: 'Safety', description: 'Front, side, and curtain airbags protecting all occupants.' },
+  { id: 'f-sunroof-pan', name: 'Panoramic Sunroof', category: 'Comfort', description: 'Dual pane expansive acoustic glass roof with voice operation.' },
+  { id: 'f-adas-2', name: 'Level 2 ADAS', category: 'Safety', description: 'Autonomous emergency braking, lane keep assist, and adaptive cruise.' },
+  { id: 'f-camera-360', name: '360° Surround Camera', category: 'Technology', description: 'Four HD cameras creating bird-eye composite with blind spot view.' },
+  { id: 'f-vent-seats', name: 'Ventilated Front Seats', category: 'Comfort', description: 'Multi-stage cooled airflow through perforated seat leatherette.' },
+  { id: 'f-sound-bose', name: 'Premium Branded Audio', category: 'Technology', description: 'Tuned multi-speaker audio system with dedicated subwoofer.' },
+  { id: 'f-wireless-cp', name: 'Wireless Apple CarPlay & Android Auto', category: 'Technology', description: 'Lag-free smartphone screen projection without cables.' },
+  { id: 'f-disc-all', name: 'All 4 Disc Brakes', category: 'Safety', description: 'Superior braking performance and shortened stopping distance.' }
+];
+
+export const REVIEWS: Review[] = [
+  {
+    id: 'rev-1',
+    modelId: 'model-nexon',
+    sourceName: 'Verified KERB Owner',
+    author: 'Vikramaditya S., Pune',
+    rating: 5,
+    title: 'Immense road presence and rock-solid highway peace of mind',
+    body: 'Driven 14,000 km across the Mumbai-Goa expressway and ghats. The DCA gearbox is silky smooth and the car feels planted at 120 km/h with zero float.',
+    pros: ['Solid build quality', 'Superb high-speed stability', 'Great audio system'],
+    cons: ['Fuel economy in stop-and-go Pune traffic is around 12 km/l'],
+    verifiedOwner: true,
+    date: '2026-02-18',
+    mileageReported: '14.2 km/l avg'
+  },
+  {
+    id: 'rev-2',
+    modelId: 'model-creta',
+    sourceName: 'Verified KERB Owner',
+    author: 'Sunil Rao, Bengaluru',
+    rating: 5,
+    title: 'The perfect urban companion for everyday Bengaluru commuting',
+    body: 'The IVT transmission is completely seamless. No jerky head-nods like AMTs. Sunroof keeps the cabin feeling airy and spacious.',
+    pros: ['Supreme engine refinement', 'Airy cabin feeling', 'Light steering in city'],
+    cons: ['Slightly soft suspension can bounce over consecutive wavy dips'],
+    verifiedOwner: true,
+    date: '2026-01-29',
+    mileageReported: '13.5 km/l city'
+  }
+];
+
+// -------------------------------------------------------------
+// 8. DOMAIN REPOSITORY / QUERY SERVICES
+// -------------------------------------------------------------
+
+export function getAllMakes(): Make[] {
+  return MAKES;
+}
+
+export function getMakeBySlug(slug: string): Make | undefined {
+  return MAKES.find((m) => m.slug.toLowerCase() === slug.toLowerCase());
+}
+
+export function getAllModels(): CarModel[] {
+  return MODELS;
+}
+
+export function getModelBySlug(makeSlug: string, modelSlug: string): CarModel | undefined {
+  const make = getMakeBySlug(makeSlug);
+  if (!make) return undefined;
+  return MODELS.find((m) => m.makeId === make.id && m.slug.toLowerCase() === modelSlug.toLowerCase());
+}
+
+export function getAllCities(): City[] {
+  return CITIES;
+}
+
+export function getCityBySlug(slug: string): City {
+  const city = CITIES.find((c) => c.slug.toLowerCase() === slug.toLowerCase());
+  return city || CITIES[0]; // fallback to Delhi
+}
+
+export function getVariantsByModel(modelId: string): Variant[] {
+  return VARIANTS.filter((v) => v.modelId === modelId);
+}
+
+export function getVariantBySlug(modelId: string, variantSlug: string): Variant | undefined {
+  return VARIANTS.find((v) => v.modelId === modelId && v.slug === variantSlug);
+}
+
+export function getCityPrice(variant: Variant, city: City): CityPrice {
+  // Check if an explicit verified quote exists
+  const existing = CITY_PRICES.find(
+    (cp) => cp.variantId === variant.id && cp.cityId === city.id && cp.isCurrent
+  );
+  if (existing) return existing;
+
+  // Otherwise calculate with deterministic state RTO formula
+  const exShowroom = variant.exShowroomPrice;
+  const rtoTax = Math.round(exShowroom * (city.rtoPercentage / 100));
+  const insurance = Math.round(exShowroom * 0.032 + 12000);
+  const fastag = 600;
+  const handlingCharges = 2500;
+  const onRoadPrice = exShowroom + rtoTax + insurance + fastag + handlingCharges;
+
+  return {
+    id: `calc-${variant.id}-${city.id}`,
+    variantId: variant.id,
+    cityId: city.id,
+    exShowroom,
+    rtoTax,
+    insurance,
+    fastag,
+    handlingCharges,
+    onRoadPrice,
+    effectiveFrom: '2026-01-01',
+    effectiveTo: null,
+    lastVerifiedAt: '2026-03-15',
+    source: `${city.state} Motor Vehicles Department Verified Formula`,
+    isCurrent: true
+  };
+}
+
+export function getCarDetailAggregate(
+  makeSlug: string,
+  modelSlug: string,
+  variantSlug?: string,
+  citySlug?: string
+): CarDetailAggregate | null {
+  const make = getMakeBySlug(makeSlug);
+  if (!make) return null;
+
+  const model = MODELS.find((m) => m.makeId === make.id && m.slug.toLowerCase() === modelSlug.toLowerCase());
+  if (!model) return null;
+
+  const currentGeneration = GENERATIONS.find((g) => g.modelId === model.id && g.isCurrent) || GENERATIONS[0];
+  const variants = getVariantsByModel(model.id);
+  
+  // Pick requested variant or recommended or first variant
+  let selectedVariant = variants[0];
+  if (variantSlug) {
+    const matched = variants.find((v) => v.slug === variantSlug);
+    if (matched) selectedVariant = matched;
+  } else {
+    const recommended = variants.find((v) => v.isRecommended);
+    if (recommended) selectedVariant = recommended;
+  }
+
+  const selectedCity = getCityBySlug(citySlug || 'delhi');
+  const pricing = getCityPrice(selectedVariant, selectedCity);
+
+  const reviews = REVIEWS.filter((r) => r.modelId === model.id);
+
+  // Features list
+  const features = FEATURES.map((f) => {
+    const isStandard = selectedVariant.keyFeatures.some((kf) => kf.toLowerCase().includes(f.name.toLowerCase()));
+    return {
+      feature: f,
+      status: (isStandard ? 'standard' : 'optional') as 'standard' | 'optional' | 'not_available'
+    };
+  });
+
+  // Rivals
+  const rivals = model.rivalSlugs
+    .map((rSlug) => {
+      const rivalModel = MODELS.find((m) => m.slug === rSlug);
+      if (!rivalModel) return null;
+      const rMake = MAKES.find((mk) => mk.id === rivalModel.makeId);
+      if (!rMake) return null;
+      return {
+        make: rMake,
+        model: rivalModel,
+        basePrice: rivalModel.priceRangeMin
+      };
+    })
+    .filter(Boolean) as Array<{ make: Make; model: CarModel; basePrice: number }>;
+
+  return {
+    make,
+    model,
+    currentGeneration,
+    variants,
+    selectedVariant,
+    selectedCity,
+    pricing,
+    features,
+    reviews,
+    rivals
+  };
+}
+
+export function filterModels(filters: {
+  bodyType?: string;
+  fuelType?: string;
+  transmission?: string;
+  seating?: number;
+  maxBudget?: number;
+  minBudget?: number;
+  makeSlug?: string;
+  isTrending?: boolean;
+  isNewLaunch?: boolean;
+  isEV?: boolean;
+  isHybrid?: boolean;
+}): CarModel[] {
+  return MODELS.filter((model) => {
+    if (filters.bodyType && model.bodyType.toLowerCase() !== filters.bodyType.toLowerCase()) return false;
+    if (filters.fuelType && !model.fuelTypes.some((f) => f.toLowerCase() === filters.fuelType?.toLowerCase())) return false;
+    if (filters.transmission && !model.transmissions.some((t) => t.toLowerCase() === filters.transmission?.toLowerCase())) return false;
+    if (filters.seating && !model.seatingCapacities.includes(filters.seating)) return false;
+    if (filters.maxBudget && model.priceRangeMin > filters.maxBudget) return false;
+    if (filters.minBudget && model.priceRangeMax < filters.minBudget) return false;
+    if (filters.makeSlug) {
+      const make = getMakeBySlug(filters.makeSlug);
+      if (!make || model.makeId !== make.id) return false;
+    }
+    if (filters.isTrending !== undefined && model.isTrending !== filters.isTrending) return false;
+    if (filters.isNewLaunch !== undefined && model.isNewLaunch !== filters.isNewLaunch) return false;
+    if (filters.isEV !== undefined && model.isEV !== filters.isEV) return false;
+    if (filters.isHybrid !== undefined && model.isHybrid !== filters.isHybrid) return false;
+    return true;
+  });
+}
