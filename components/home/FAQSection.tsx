@@ -46,18 +46,26 @@ export default function FAQSection() {
   return (
     <section className="faq-section" aria-labelledby="faq-title">
       <div className="kerb-page-container">
-        {/* Header */}
-        <div className="kerb-section-header-row">
-          <h2 id="faq-title" className="kerb-section-title">
-            Frequently asked questions
-          </h2>
-          <Link href="/guides" className="kerb-view-all-link">
-            <span>View all</span>
-            <span aria-hidden="true">→</span>
-          </Link>
+        {/* Section Header with Eyebrow, Title, Description, and Link */}
+        <div className="kerb-section-header">
+          <span className="kerb-section-eyebrow">QUESTIONS &amp; ANSWERS</span>
+          <div className="kerb-section-header-row">
+            <div>
+              <h2 id="faq-title" className="kerb-section-title">
+                Frequently asked questions
+              </h2>
+              <p className="kerb-section-desc">
+                Clear, transparent answers about on-road pricing, RTO taxes, and comparisons.
+              </p>
+            </div>
+            <Link href="/guides" className="kerb-view-all-link">
+              <span>View all</span>
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
         </div>
 
-        {/* Accordions */}
+        {/* Accordions (Min 56px per row) */}
         <div className="faq-accordion-list">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
@@ -71,7 +79,7 @@ export default function FAQSection() {
                 >
                   <span className="faq-question-text">{faq.question}</span>
                   <span className={`faq-chevron ${isOpen ? 'rotate' : ''}`} aria-hidden="true">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </span>
@@ -92,47 +100,49 @@ export default function FAQSection() {
         .faq-section {
           width: 100%;
           padding-top: 24px;
-          padding-bottom: 32px;
+          padding-bottom: 36px;
         }
 
         .faq-accordion-list {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 12px;
         }
 
         .faq-glass-item {
           background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.10);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-radius: 18px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          border-radius: 20px;
           overflow: hidden;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-          transition: border-color 150ms ease, box-shadow 150ms ease;
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          transition: border-color 180ms ease, box-shadow 180ms ease;
         }
 
         .faq-glass-item:hover,
         .faq-glass-item.is-open {
-          border-color: rgba(0, 232, 135, 0.3);
-          box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.4);
+          border-color: rgba(0, 232, 135, 0.35);
+          box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.45);
         }
 
         .faq-toggle-btn {
           width: 100%;
-          padding: 16px 18px;
+          min-height: 56px;
+          padding: 18px 22px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 12px;
+          gap: 14px;
           background: transparent;
           border: none;
           color: #FFFFFF;
-          font-size: 14px;
-          font-weight: 600;
+          font-size: 15px;
+          font-weight: 750;
           text-align: left;
           cursor: pointer;
           font-family: inherit;
+          box-sizing: border-box;
         }
 
         .faq-question-text {
@@ -140,10 +150,11 @@ export default function FAQSection() {
         }
 
         .faq-chevron {
-          color: rgba(255, 255, 255, 0.5);
+          color: rgba(255, 255, 255, 0.55);
           display: flex;
           align-items: center;
           transition: transform 200ms ease, color 200ms ease;
+          flex-shrink: 0;
         }
 
         .faq-chevron.rotate {
@@ -152,13 +163,13 @@ export default function FAQSection() {
         }
 
         .faq-answer-panel {
-          padding: 0 18px 16px;
+          padding: 0 22px 20px;
         }
 
         .faq-answer-text {
-          font-size: 13px;
-          color: rgba(255, 255, 255, 0.7);
-          line-height: 1.55;
+          font-size: 13.5px;
+          color: rgba(255, 255, 255, 0.75);
+          line-height: 1.6;
           margin: 0;
         }
       `}</style>

@@ -154,13 +154,13 @@ export const MobileBottomNav: React.FC = () => {
           left: 0;
           right: 0;
           z-index: 999;
-          height: 64px;
-          background: rgba(11, 21, 19, 0.92);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          height: 68px;
+          background: rgba(5, 12, 10, 0.92);
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          border-top: 1px solid rgba(255, 255, 255, 0.10);
           padding-bottom: env(safe-area-inset-bottom, 0px);
-          box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.55);
         }
 
         .nav-inner {
@@ -179,11 +179,11 @@ export const MobileBottomNav: React.FC = () => {
           justify-content: center;
           flex: 1;
           height: 100%;
-          min-height: 48px;
-          min-width: 44px;
+          min-height: 52px;
+          min-width: 48px;
           text-decoration: none;
-          color: rgba(255, 255, 255, 0.5);
-          gap: 3px;
+          color: rgba(255, 255, 255, 0.55);
+          gap: 4px;
           transition: all 150ms ease;
           background: transparent;
           border: none;
@@ -200,8 +200,8 @@ export const MobileBottomNav: React.FC = () => {
         }
 
         .nav-label {
-          font-size: 11px;
-          font-weight: 500;
+          font-size: 11.5px;
+          font-weight: 600;
           letter-spacing: -0.01em;
         }
 
@@ -210,11 +210,12 @@ export const MobileBottomNav: React.FC = () => {
         }
 
         .nav-item.active .nav-icon-wrap {
-          filter: drop-shadow(0 0 8px rgba(0, 232, 135, 0.6));
+          filter: drop-shadow(0 0 10px rgba(0, 232, 135, 0.7));
+          transform: translateY(-1px);
         }
 
         .nav-item.active .nav-label {
-          font-weight: 700;
+          font-weight: 750;
           color: #00E887;
         }
 

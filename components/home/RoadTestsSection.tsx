@@ -8,22 +8,22 @@ export default function RoadTestsSection() {
   const reviews = [
     {
       car: 'Tata Nexon',
-      rating: '4.6/5',
-      review: 'A well-rounded SUV for Indian roads.',
+      rating: '4.6 / 5',
+      review: 'A well-rounded compact SUV with class-leading 5-star crash safety and punchy turbo performance.',
       image: '/nexon.jpg',
       href: '/cars/tata/nexon'
     },
     {
       car: 'Hyundai Creta',
-      rating: '4.7/5',
-      review: 'Refined, comfortable and feature-loaded.',
+      rating: '4.7 / 5',
+      review: 'Refined suspension, whisper-quiet cabin, and benchmark connected tech that excels on Indian roads.',
       image: '/creta.jpg',
       href: '/cars/hyundai/creta'
     },
     {
       car: 'Maruti Grand Vitara',
-      rating: '4.5/5',
-      review: 'Strong hybrid with great efficiency.',
+      rating: '4.5 / 5',
+      review: 'Strong intelligent hybrid system offering unmatched 27+ kmpl real-world city fuel economy.',
       image: '/vitara.jpg',
       href: '/cars/maruti-suzuki/grand-vitara'
     }
@@ -32,18 +32,26 @@ export default function RoadTestsSection() {
   return (
     <section className="roadtests-section" aria-labelledby="roadtests-title">
       <div className="kerb-page-container">
-        {/* Header */}
-        <div className="kerb-section-header-row">
-          <h2 id="roadtests-title" className="kerb-section-title">
-            Independent road test reviews
-          </h2>
-          <Link href="/cars" className="kerb-view-all-link">
-            <span>View all</span>
-            <span aria-hidden="true">→</span>
-          </Link>
+        {/* Section Header with Eyebrow, Title, Description, and Link */}
+        <div className="kerb-section-header">
+          <span className="kerb-section-eyebrow">VERIFIED REVIEWS</span>
+          <div className="kerb-section-header-row">
+            <div>
+              <h2 id="roadtests-title" className="kerb-section-title">
+                Independent road test reviews
+              </h2>
+              <p className="kerb-section-desc">
+                Instrumented acceleration tests, real-world mileage verification, and expert verdict.
+              </p>
+            </div>
+            <Link href="/cars" className="kerb-view-all-link">
+              <span>View all</span>
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
         </div>
 
-        {/* Horizontal Track of Review Cards */}
+        {/* Horizontal Track of Larger Review Cards */}
         <div className="reviews-track no-scrollbar">
           {reviews.map((r) => (
             <div key={r.car} className="review-glass-card">
@@ -52,7 +60,7 @@ export default function RoadTestsSection() {
                   src={r.image}
                   alt={r.car}
                   fill
-                  sizes="(max-width: 640px) 200px, 320px"
+                  sizes="(max-width: 640px) 260px, 360px"
                   className="review-img"
                 />
                 <span className="rating-pill">★ {r.rating}</span>
@@ -62,10 +70,12 @@ export default function RoadTestsSection() {
                 <h3 className="review-car-title">{r.car}</h3>
                 <p className="review-quote">&ldquo;{r.review}&rdquo;</p>
 
-                <Link href={r.href} className="review-read-link">
-                  <span>Read Review</span>
-                  <span aria-hidden="true">→</span>
-                </Link>
+                <div className="review-action-wrap">
+                  <Link href={r.href} className="review-read-link">
+                    <span>Read Review</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -76,61 +86,73 @@ export default function RoadTestsSection() {
         .roadtests-section {
           width: 100%;
           padding-top: 24px;
-          padding-bottom: 32px;
+          padding-bottom: 36px;
         }
 
         .reviews-track {
           display: flex;
           align-items: stretch;
-          gap: 12px;
+          gap: 16px;
           overflow-x: auto;
-          padding-bottom: 6px;
+          padding-bottom: 8px;
           padding-inline: 2px;
           -webkit-overflow-scrolling: touch;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
           .reviews-track {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            gap: 20px;
             overflow: visible;
           }
         }
 
         .review-glass-card {
-          flex: 1 0 200px;
-          min-width: 190px;
+          flex: 0 0 265px;
           background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.10);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          border-radius: 22px;
           overflow: hidden;
           display: flex;
           flex-direction: column;
-          box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
-          transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+          box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+          transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+          box-sizing: border-box;
+        }
+
+        @media (min-width: 440px) {
+          .review-glass-card {
+            flex: 0 0 285px;
+          }
         }
 
         .review-glass-card:hover {
-          transform: translateY(-2px);
-          border-color: rgba(0, 232, 135, 0.35);
-          box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.45);
+          transform: translateY(-3px);
+          border-color: rgba(0, 232, 135, 0.45);
+          box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
         }
 
         .review-media-wrap {
           position: relative;
           width: 100%;
-          height: 110px;
-          background: rgba(0, 0, 0, 0.4);
+          height: 135px;
+          background: rgba(0, 0, 0, 0.35);
           overflow: hidden;
+        }
+
+        @media (min-width: 440px) {
+          .review-media-wrap {
+            height: 150px;
+          }
         }
 
         :global(.review-img) {
           object-fit: cover;
           object-position: center;
-          transition: transform 300ms ease;
+          transition: transform 250ms ease;
         }
 
         .review-glass-card:hover :global(.review-img) {
@@ -139,55 +161,50 @@ export default function RoadTestsSection() {
 
         .rating-pill {
           position: absolute;
-          bottom: 8px;
-          left: 8px;
-          background: rgba(11, 21, 19, 0.85);
-          border: 1px solid rgba(0, 232, 135, 0.4);
-          color: var(--kerb-green-primary, #00E887);
+          top: 10px;
+          right: 10px;
+          background: rgba(5, 10, 9, 0.82);
+          border: 1px solid rgba(0, 232, 135, 0.5);
+          color: #00E887;
           font-size: 11px;
-          font-weight: 750;
+          font-weight: 800;
+          padding: 4px 10px;
           border-radius: 9999px;
-          padding: 3px 8px;
-          backdrop-filter: blur(8px);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
         }
 
         .review-body {
-          padding: 12px;
+          padding: 16px 16px 18px;
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 8px;
           flex: 1;
         }
 
         .review-car-title {
-          font-size: 14px;
-          font-weight: 700;
+          font-size: 16.5px;
+          font-weight: 800;
           color: #FFFFFF;
           margin: 0;
+          letter-spacing: -0.015em;
         }
 
         .review-quote {
-          font-size: 12px;
+          font-size: 13px;
           color: rgba(255, 255, 255, 0.7);
-          line-height: 1.35;
+          line-height: 1.45;
           margin: 0;
           flex: 1;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
-        .review-read-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          font-size: 12px;
-          font-weight: 600;
-          color: var(--kerb-green-primary, #00E887);
-          text-decoration: none;
-          margin-top: 8px;
-          transition: transform 150ms ease;
-        }
-
-        .review-read-link:hover {
-          transform: translateX(2px);
+        .review-action-wrap {
+          margin-top: 6px;
         }
       `}</style>
     </section>

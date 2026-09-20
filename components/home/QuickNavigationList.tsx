@@ -150,22 +150,23 @@ export default function QuickNavigationList() {
           align-items: center;
           justify-content: space-between;
           background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.10);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-radius: 18px;
-          padding: 14px 18px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          border-radius: 20px;
+          padding: 16px 20px;
           text-decoration: none;
           color: #FFFFFF;
-          min-height: 48px;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+          min-height: 56px;
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
           transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+          box-sizing: border-box;
         }
 
         .nav-list-item:hover {
-          background: rgba(255, 255, 255, 0.09);
-          border-color: rgba(0, 232, 135, 0.35);
-          transform: translateX(3px);
+          background: rgba(255, 255, 255, 0.10);
+          border-color: rgba(0, 232, 135, 0.4);
+          transform: translateX(4px);
         }
 
         .link-left {
@@ -175,7 +176,7 @@ export default function QuickNavigationList() {
         }
 
         .link-icon {
-          color: rgba(255, 255, 255, 0.6);
+          color: rgba(255, 255, 255, 0.65);
           display: flex;
           align-items: center;
         }
@@ -185,13 +186,13 @@ export default function QuickNavigationList() {
         }
 
         .link-label {
-          font-size: 14px;
-          font-weight: 600;
+          font-size: 15px;
+          font-weight: 700;
           color: #FFFFFF;
         }
 
         .link-chevron {
-          color: rgba(255, 255, 255, 0.4);
+          color: rgba(255, 255, 255, 0.45);
           display: flex;
           align-items: center;
         }

@@ -173,15 +173,15 @@ export default function HomePageClient({
           flex-direction: column;
           background-color: var(--kerb-bg-primary, #050A09);
           color: var(--kerb-text-primary, #FFFFFF);
-          padding-bottom: 64px; /* Space for MobileBottomNav on mobile devices */
+          padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); /* Space for MobileBottomNav */
           overflow-x: hidden;
         }
 
         .kerb-search-section-slot {
           position: relative;
           z-index: 20;
-          margin-top: -16px;
-          margin-bottom: 24px;
+          margin-top: -20px;
+          margin-bottom: 32px;
           padding-inline: 4px;
         }
 
@@ -191,8 +191,8 @@ export default function HomePageClient({
           }
 
           .kerb-search-section-slot {
-            margin-top: -24px;
-            margin-bottom: 36px;
+            margin-top: -28px;
+            margin-bottom: 44px;
           }
         }
       `}</style>

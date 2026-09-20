@@ -29,15 +29,23 @@ export default function NewLaunchesSection() {
   return (
     <section className="new-launches-section" aria-labelledby="new-launches-title">
       <div className="kerb-page-container">
-        {/* Header */}
-        <div className="kerb-section-header-row">
-          <h2 id="new-launches-title" className="kerb-section-title">
-            New launches
-          </h2>
-          <Link href="/cars" className="kerb-view-all-link">
-            <span>View all</span>
-            <span aria-hidden="true">→</span>
-          </Link>
+        {/* Section Header with Eyebrow, Title, Description, and Link */}
+        <div className="kerb-section-header">
+          <span className="kerb-section-eyebrow">UPCOMING &amp; RECENT</span>
+          <div className="kerb-section-header-row">
+            <div>
+              <h2 id="new-launches-title" className="kerb-section-title">
+                New launches
+              </h2>
+              <p className="kerb-section-desc">
+                The newest nameplates and generational updates entering the Indian market.
+              </p>
+            </div>
+            <Link href="/cars" className="kerb-view-all-link">
+              <span>View all</span>
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
         </div>
 
         {/* Horizontal Scroll Track of New Launch Cards */}
@@ -49,7 +57,7 @@ export default function NewLaunchesSection() {
                   src={item.image}
                   alt={item.name}
                   fill
-                  sizes="(max-width: 640px) 180px, 260px"
+                  sizes="(max-width: 640px) 220px, 320px"
                   className="launch-img"
                 />
                 <span className="badge-new">New</span>
@@ -68,15 +76,15 @@ export default function NewLaunchesSection() {
         .new-launches-section {
           width: 100%;
           padding-top: 24px;
-          padding-bottom: 32px;
+          padding-bottom: 36px;
         }
 
         .launches-track {
           display: flex;
           align-items: stretch;
-          gap: 12px;
+          gap: 16px;
           overflow-x: auto;
-          padding-bottom: 6px;
+          padding-bottom: 8px;
           padding-inline: 2px;
           -webkit-overflow-scrolling: touch;
         }
@@ -85,42 +93,54 @@ export default function NewLaunchesSection() {
           .launches-track {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            gap: 20px;
             overflow: visible;
           }
         }
 
         .launch-card {
-          flex: 1 0 170px;
-          min-width: 160px;
+          flex: 0 0 220px;
           background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.10);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-radius: 20px;
-          padding: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          border-radius: 22px;
+          overflow: hidden;
+          padding: 12px;
           display: flex;
           flex-direction: column;
           text-decoration: none;
           color: #FFFFFF;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.1);
           transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+          box-sizing: border-box;
+        }
+
+        @media (min-width: 440px) {
+          .launch-card {
+            flex: 0 0 250px;
+          }
         }
 
         .launch-card:hover {
-          transform: translateY(-2px);
-          border-color: rgba(0, 232, 135, 0.35);
-          box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.45);
+          transform: translateY(-3px);
+          border-color: rgba(0, 232, 135, 0.4);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
         }
 
         .launch-media-wrap {
           position: relative;
           width: 100%;
-          height: 100px;
+          height: 125px;
           border-radius: 14px;
           overflow: hidden;
-          background: rgba(0, 0, 0, 0.3);
-          margin-bottom: 10px;
+          background: rgba(0, 0, 0, 0.35);
+        }
+
+        @media (min-width: 440px) {
+          .launch-media-wrap {
+            height: 140px;
+          }
         }
 
         :global(.launch-img) {
@@ -137,37 +157,34 @@ export default function NewLaunchesSection() {
           position: absolute;
           top: 8px;
           left: 8px;
-          background: rgba(11, 21, 19, 0.85);
-          border: 1px solid rgba(0, 232, 135, 0.4);
-          color: var(--kerb-green-primary, #00E887);
+          background: #00E887;
+          color: #050A09;
           font-size: 10px;
-          font-weight: 750;
+          font-weight: 850;
           text-transform: uppercase;
+          padding: 3px 8px;
           border-radius: 9999px;
-          padding: 2px 8px;
-          backdrop-filter: blur(8px);
+          box-shadow: 0 2px 8px rgba(0, 232, 135, 0.4);
         }
 
         .launch-info {
-          padding: 0 4px 4px;
+          padding: 10px 4px 4px;
           display: flex;
           flex-direction: column;
-          gap: 2px;
+          gap: 4px;
         }
 
         .launch-name {
-          font-size: 13px;
-          font-weight: 750;
+          font-size: 15.5px;
+          font-weight: 800;
           color: #FFFFFF;
           margin: 0;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          letter-spacing: -0.01em;
         }
 
         .launch-price {
-          font-size: 12px;
-          font-weight: 600;
+          font-size: 13.5px;
+          font-weight: 750;
           color: var(--kerb-green-primary, #00E887);
         }
       `}</style>

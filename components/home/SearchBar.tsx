@@ -182,7 +182,7 @@ export default function SearchBar({ models, makes, cities = [] }: SearchBarProps
           type="search"
           role="combobox"
           className="search-input"
-          placeholder="Search cars, brands, or variants..."
+          placeholder="Search cars, brands, variants..."
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
@@ -195,7 +195,7 @@ export default function SearchBar({ models, makes, cities = [] }: SearchBarProps
           aria-autocomplete="list"
           aria-expanded={isOpen}
           aria-controls="search-suggestions-menu"
-          aria-label="Search cars, brands, or variants"
+          aria-label="Search cars, brands, variants"
         />
 
         {query && (
@@ -215,7 +215,7 @@ export default function SearchBar({ models, makes, cities = [] }: SearchBarProps
 
         {/* Circular Action Button with Microphone Icon */}
         <button type="submit" className="search-action-btn" aria-label="Submit search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
             <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
             <line x1="12" y1="19" x2="12" y2="23" />
@@ -284,7 +284,7 @@ export default function SearchBar({ models, makes, cities = [] }: SearchBarProps
         .kerb-search-container {
           position: relative;
           width: 100%;
-          max-width: 540px;
+          max-width: 580px;
           margin-inline: auto;
           box-sizing: border-box;
         }
@@ -293,28 +293,28 @@ export default function SearchBar({ models, makes, cities = [] }: SearchBarProps
           display: flex;
           align-items: center;
           width: 100%;
-          height: 52px;
+          height: 56px;
           background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.14);
+          border: 1px solid rgba(255, 255, 255, 0.16);
           border-radius: 9999px;
-          padding: 4px 6px 4px 18px;
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+          padding: 5px 6px 5px 20px;
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
           transition: border-color 150ms ease, box-shadow 150ms ease;
           box-sizing: border-box;
         }
 
         .kerb-search-bar:focus-within {
           border-color: var(--kerb-green-primary, #00E887);
-          box-shadow: 0 0 0 3px rgba(0, 232, 135, 0.2), 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 0 3px rgba(0, 232, 135, 0.25), 0 12px 36px 0 rgba(0, 0, 0, 0.55);
         }
 
         .search-icon-wrap {
-          color: rgba(255, 255, 255, 0.5);
+          color: rgba(255, 255, 255, 0.6);
           display: flex;
           align-items: center;
-          margin-right: 12px;
+          margin-right: 14px;
           flex-shrink: 0;
         }
 
@@ -324,21 +324,21 @@ export default function SearchBar({ models, makes, cities = [] }: SearchBarProps
           border: none;
           outline: none;
           color: #FFFFFF;
-          font-size: 15px;
+          font-size: 16px;
           font-family: inherit;
-          min-height: 40px;
+          min-height: 44px;
         }
 
         .search-input::placeholder {
-          color: rgba(255, 255, 255, 0.45);
-          font-size: 14px;
+          color: rgba(255, 255, 255, 0.55);
+          font-size: 15px;
         }
 
         .search-clear-btn {
           background: transparent;
           border: none;
           color: rgba(255, 255, 255, 0.5);
-          padding: 6px 10px;
+          padding: 8px 12px;
           font-size: 14px;
           cursor: pointer;
           display: flex;
@@ -351,8 +351,8 @@ export default function SearchBar({ models, makes, cities = [] }: SearchBarProps
         }
 
         .search-action-btn {
-          width: 42px;
-          height: 42px;
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
           background: var(--kerb-green-primary, #00E887);
           color: #050A09;
@@ -361,13 +361,13 @@ export default function SearchBar({ models, makes, cities = [] }: SearchBarProps
           place-items: center;
           cursor: pointer;
           flex-shrink: 0;
-          box-shadow: 0 4px 14px rgba(0, 232, 135, 0.4);
+          box-shadow: 0 4px 16px rgba(0, 232, 135, 0.45);
           transition: transform 150ms ease, box-shadow 150ms ease;
         }
 
         .search-action-btn:hover {
           transform: scale(1.06);
-          box-shadow: 0 6px 20px rgba(0, 232, 135, 0.55);
+          box-shadow: 0 6px 22px rgba(0, 232, 135, 0.65);
         }
 
         /* Autocomplete Dropdown */

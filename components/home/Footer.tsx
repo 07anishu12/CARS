@@ -200,11 +200,12 @@ export default function Footer() {
         }
 
         .footer-col-header {
-          font-size: 11px;
-          font-weight: 750;
+          font-size: 13.5px;
+          font-weight: 800;
           color: #FFFFFF;
-          text-transform: capitalize;
-          margin-bottom: 8px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 12px;
         }
 
         .footer-links-list {
@@ -213,14 +214,16 @@ export default function Footer() {
           margin: 0;
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 10px;
         }
 
         .footer-link {
-          font-size: 10.5px;
-          color: rgba(255, 255, 255, 0.55);
+          font-size: 13.5px;
+          color: rgba(255, 255, 255, 0.65);
           text-decoration: none;
           transition: color 150ms ease;
+          display: inline-block;
+          padding: 2px 0;
         }
 
         .footer-link:hover {
@@ -229,23 +232,23 @@ export default function Footer() {
 
         /* Bottom Bar */
         .footer-bottom-bar {
-          padding-top: 20px;
+          padding-top: 24px;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
           display: flex;
           flex-direction: column;
-          gap: 4px;
+          gap: 6px;
           align-items: center;
           text-align: center;
         }
 
         .footer-made-for {
-          font-size: 10.5px;
-          color: rgba(255, 255, 255, 0.45);
+          font-size: 12.5px;
+          color: rgba(255, 255, 255, 0.6);
         }
 
         .footer-copyright {
-          font-size: 10px;
-          color: rgba(255, 255, 255, 0.35);
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.45);
         }
       `}</style>
     </footer>

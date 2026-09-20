@@ -228,18 +228,31 @@ export default function HomeHeader({ onOpenLeadModal }: HomeHeaderProps) {
           top: 0;
           left: 0;
           right: 0;
-          height: 68px;
+          height: 60px;
           z-index: 900;
-          background-color: var(--background);
-          border-bottom: 1px solid var(--border);
-          transition: background-color var(--transition-theme), border-color var(--transition-theme), box-shadow var(--transition-hover);
+          background: rgba(5, 10, 9, 0.88);
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+          transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+        }
+
+        @media (min-width: 768px) {
+          .kerb-unified-header {
+            height: 64px;
+          }
+        }
+
+        :global([data-theme="light"]) .kerb-unified-header {
+          background: rgba(243, 245, 244, 0.88);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         }
 
         .kerb-unified-header.is-scrolled {
-          background-color: var(--surface-overlay);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          box-shadow: var(--shadow-sm);
+          background: rgba(5, 10, 9, 0.94);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
 
         .header-inner {

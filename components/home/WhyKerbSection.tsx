@@ -5,8 +5,8 @@ import React from 'react';
 export default function WhyKerbSection() {
   const pillars = [
     {
-      title: 'Unbiased information',
-      desc: 'No dealer influence',
+      title: 'Research-backed',
+      desc: 'No dealer influence or sponsored bias',
       iconBg: 'rgba(0, 232, 135, 0.12)',
       iconColor: '#00E887',
       svg: (
@@ -15,38 +15,36 @@ export default function WhyKerbSection() {
           <polyline points="14 2 14 8 20 8" />
           <line x1="16" y1="13" x2="8" y2="13" />
           <line x1="16" y1="17" x2="8" y2="17" />
-          <polyline points="10 9 9 9 8 9" />
         </svg>
       )
     },
     {
-      title: 'Expert insights',
-      desc: 'Research-backed',
+      title: 'City-wise pricing',
+      desc: 'Exact RTO taxes & state levies',
       iconBg: 'rgba(20, 184, 166, 0.12)',
       iconColor: '#14B8A6',
       svg: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          <path d="M12 8v4M12 16h.01" />
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+          <path d="M2 12h20" />
         </svg>
       )
     },
     {
-      title: 'City-wise prices',
-      desc: 'Accurate & updated',
+      title: 'Easy comparison',
+      desc: 'Side-by-side specs and 5-yr TCO',
       iconBg: 'rgba(0, 180, 216, 0.12)',
       iconColor: '#00B4D8',
       svg: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="18" y1="20" x2="18" y2="10" />
-          <line x1="12" y1="20" x2="12" y2="4" />
-          <line x1="6" y1="20" x2="6" y2="14" />
+          <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
         </svg>
       )
     },
     {
       title: 'Built for Indian buyers',
-      desc: 'Simpler decisions',
+      desc: 'Real road test metrics & efficiency',
       iconBg: 'rgba(16, 185, 129, 0.12)',
       iconColor: '#10B981',
       svg: (
@@ -60,10 +58,18 @@ export default function WhyKerbSection() {
   return (
     <section className="why-kerb-section" aria-labelledby="why-kerb-title">
       <div className="kerb-page-container">
-        <h2 id="why-kerb-title" className="kerb-section-title" style={{ marginBottom: '16px' }}>
-          Why KERB?
-        </h2>
+        {/* Section Header */}
+        <div className="kerb-section-header">
+          <span className="kerb-section-eyebrow">TRUST &amp; CLARITY</span>
+          <h2 id="why-kerb-title" className="kerb-section-title">
+            Why KERB?
+          </h2>
+          <p className="kerb-section-desc">
+            Automotive clarity designed specifically for car buyers across India.
+          </p>
+        </div>
 
+        {/* 2x2 Grid on Mobile / 4-col on Desktop */}
         <div className="why-grid">
           {pillars.map((p) => (
             <div key={p.title} className="why-card">
@@ -91,45 +97,48 @@ export default function WhyKerbSection() {
         .why-kerb-section {
           width: 100%;
           padding-top: 24px;
-          padding-bottom: 32px;
+          padding-bottom: 36px;
         }
 
         .why-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 12px;
+          gap: 14px;
         }
 
         @media (min-width: 768px) {
           .why-grid {
             grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
+            gap: 18px;
           }
         }
 
         .why-card {
           background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.10);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-radius: 20px;
-          padding: 16px 14px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          border-radius: 22px;
+          padding: 18px 16px;
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          align-items: flex-start;
           gap: 12px;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-          transition: transform 180ms ease, border-color 180ms ease;
+          box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+          box-sizing: border-box;
         }
 
         .why-card:hover {
           transform: translateY(-2px);
-          border-color: rgba(0, 232, 135, 0.3);
+          border-color: rgba(0, 232, 135, 0.4);
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
         }
 
         .why-icon-wrap {
-          width: 42px;
-          height: 42px;
-          border-radius: 12px;
+          width: 44px;
+          height: 44px;
+          border-radius: 14px;
           display: grid;
           place-items: center;
           flex-shrink: 0;
@@ -138,22 +147,23 @@ export default function WhyKerbSection() {
         .why-text {
           display: flex;
           flex-direction: column;
-          gap: 2px;
+          gap: 4px;
           min-width: 0;
         }
 
         .why-card-title {
-          font-size: 13px;
-          font-weight: 750;
+          font-size: 14.5px;
+          font-weight: 800;
           color: #FFFFFF;
           margin: 0;
           line-height: 1.25;
         }
 
         .why-card-desc {
-          font-size: 11px;
-          color: rgba(255, 255, 255, 0.6);
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.65);
           margin: 0;
+          line-height: 1.35;
         }
       `}</style>
     </section>

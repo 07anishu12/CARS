@@ -87,7 +87,7 @@ export default function LeadCapture({
   };
 
   const defaultTitle = title || (selectedCarName ? `Get Offers on ${selectedCarName}` : 'Get personalised car options');
-  const defaultSubtitle = subtitle || "Tell us your details and we'll show the best cars for you.";
+  const defaultSubtitle = subtitle || "Tell us a few details and we'll show relevant cars for you.";
 
   const formContent = (
     <>
@@ -116,7 +116,7 @@ export default function LeadCapture({
             <div className="input-field-wrap">
               <div className={`input-pill ${errors.name ? 'input-error' : ''}`}>
                 <span className="input-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                     <circle cx="12" cy="7" r="4" />
                   </svg>
@@ -140,7 +140,7 @@ export default function LeadCapture({
             <div className="input-field-wrap">
               <div className={`input-pill ${errors.phone ? 'input-error' : ''}`}>
                 <span className="input-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
                     <line x1="12" y1="18" x2="12.01" y2="18" />
                   </svg>
@@ -166,7 +166,7 @@ export default function LeadCapture({
             <div className="input-field-wrap">
               <div className={`input-pill ${errors.pin ? 'input-error' : ''}`}>
                 <span className="input-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
@@ -191,8 +191,21 @@ export default function LeadCapture({
 
           <button type="submit" className="btn-green-submit">
             <span>Show My Options</span>
-            <span aria-hidden="true">→</span>
+            <span aria-hidden="true">&rarr;</span>
           </button>
+
+          {/* Trust Guarantees */}
+          <div className="lead-trust-row" aria-label="Trust guarantees">
+            <span className="trust-item">
+              <span className="check-mark">&bull;</span> Relevant cars in your area
+            </span>
+            <span className="trust-item">
+              <span className="check-mark">&bull;</span> No spam
+            </span>
+            <span className="trust-item">
+              <span className="check-mark">&bull;</span> 100% free
+            </span>
+          </div>
         </form>
       )}
 
@@ -227,20 +240,21 @@ export default function LeadCapture({
         .input-pill {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          border: 1px solid rgba(255, 255, 255, 0.16);
           border-radius: 9999px;
-          height: 48px;
-          padding: 0 16px;
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          height: 50px;
+          padding: 0 18px;
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           transition: border-color 150ms ease, box-shadow 150ms ease;
+          box-sizing: border-box;
         }
 
         .input-pill:focus-within {
           border-color: var(--kerb-green-primary, #00E887);
-          box-shadow: 0 0 0 3px rgba(0, 232, 135, 0.2);
+          box-shadow: 0 0 0 3px rgba(0, 232, 135, 0.25);
         }
 
         .input-pill.input-error {
@@ -248,7 +262,7 @@ export default function LeadCapture({
         }
 
         .input-icon {
-          color: rgba(255, 255, 255, 0.5);
+          color: rgba(255, 255, 255, 0.6);
           display: flex;
           align-items: center;
           flex-shrink: 0;
@@ -260,12 +274,13 @@ export default function LeadCapture({
           border: none;
           outline: none;
           color: #FFFFFF;
-          font-size: 14px;
+          font-size: 15px;
           font-family: inherit;
         }
 
         .glass-native-input::placeholder {
-          color: rgba(255, 255, 255, 0.45);
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 14px;
         }
 
         .error-text {
@@ -281,21 +296,43 @@ export default function LeadCapture({
           gap: 8px;
           background: var(--kerb-green-primary, #00E887);
           color: #050A09;
-          font-size: 15px;
-          font-weight: 750;
+          font-size: 16px;
+          font-weight: 850;
           border-radius: 9999px;
-          height: 48px;
+          height: 52px;
           width: 100%;
           border: none;
           cursor: pointer;
-          box-shadow: 0 4px 20px rgba(0, 232, 135, 0.4);
+          box-shadow: 0 6px 22px rgba(0, 232, 135, 0.45);
           transition: transform 150ms ease, box-shadow 150ms ease;
-          margin-top: 4px;
+          margin-top: 6px;
         }
 
         .btn-green-submit:hover {
           transform: translateY(-1px);
-          box-shadow: 0 8px 26px rgba(0, 232, 135, 0.6);
+          box-shadow: 0 10px 28px rgba(0, 232, 135, 0.65);
+        }
+
+        .lead-trust-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
+          margin-top: 10px;
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .trust-item {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+
+        .check-mark {
+          color: var(--kerb-green-primary, #00E887);
+          font-weight: bold;
         }
 
         .lead-success-card {
@@ -458,21 +495,22 @@ export default function LeadCapture({
         }
 
         .lead-box-container {
-          background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(0, 232, 135, 0.35);
-          backdrop-filter: blur(24px);
-          -webkit-backdrop-filter: blur(24px);
-          border-radius: 24px;
-          padding: 24px 20px;
-          box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.5), 0 0 28px -4px rgba(0, 232, 135, 0.2);
+          background: linear-gradient(135deg, rgba(6, 34, 23, 0.88) 0%, rgba(8, 22, 18, 0.95) 100%);
+          border: 1px solid rgba(0, 232, 135, 0.4);
+          backdrop-filter: blur(28px) saturate(180%);
+          -webkit-backdrop-filter: blur(28px) saturate(180%);
+          border-radius: 26px;
+          padding: 28px 22px;
+          box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55), 0 0 32px rgba(0, 232, 135, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 20px;
+          box-sizing: border-box;
         }
 
         @media (min-width: 768px) {
           .lead-box-container {
-            padding: 36px 40px;
+            padding: 40px 44px;
           }
         }
 
@@ -481,23 +519,24 @@ export default function LeadCapture({
         }
 
         .lead-box-title {
-          font-size: 20px;
-          font-weight: 800;
-          letter-spacing: -0.02em;
+          font-size: 24px;
+          font-weight: 850;
+          letter-spacing: -0.025em;
           color: #FFFFFF;
-          margin: 0 0 4px;
+          margin: 0 0 6px;
         }
 
         @media (min-width: 768px) {
           .lead-box-title {
-            font-size: 24px;
+            font-size: 28px;
           }
         }
 
         .lead-box-desc {
-          font-size: 13px;
-          color: rgba(255, 255, 255, 0.65);
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.72);
           margin: 0;
+          line-height: 1.45;
         }
 
         .lead-form-slot {
